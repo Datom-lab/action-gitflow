@@ -17,7 +17,7 @@ if [[ -z "$DESTINATION_BRANCH" ]]; then
     exit 1
 fi
 
-if "$DESTINATION_BRANCH" == "$MAIN_BRANCH" || "$DESTINATION_BRANCH" == "$DEVELOP_BRANCH"; then
+if [[ "$DESTINATION_BRANCH" == "$MAIN_BRANCH" || "$DESTINATION_BRANCH" == "$DEVELOP_BRANCH" ]]; then
     echo "INFO : Destination branch '$DESTINATION_BRANCH' is valid"
 else
     echo "ERROR: Destination branch '$DESTINATION_BRANCH' is not valid"
