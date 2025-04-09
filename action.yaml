@@ -1,0 +1,28 @@
+name: "Gitflow Syntax"
+description: "Gitflow syntax checker"
+inputs:
+  branch_name:
+    description: "Branch name to check"
+    required: true
+  destination_branch:
+    description: "Destination branch to check against"
+    required: true
+  branch_name_main:
+    description: "Branch name for master"
+    required: true
+    default: "main"
+  branch_name_develop:
+    description: "Branch name for develop"
+    required: true
+    default: "develop"
+runs:
+  using: composite
+  steps: 
+    - name: Check branch name
+      run: branch_name.sh
+      shell: bash
+      env:
+        BRANCH_NAME: ${{ inputs.branch_name }}
+        DESTINATION_BRANCH: ${{ inputs.destination_branch }}
+        BRANCH_NAME_MAIN: ${{ inputs.branch_name_main }}
+        BRANCH_NAME_DEVELOP: ${{ inputs.branch_name_develop }}
